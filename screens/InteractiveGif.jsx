@@ -52,4 +52,3 @@ const styles = StyleSheet.create({
   speed: { marginTop: 15, fontSize: 16, color: '#fff' },
   tip: { fontSize: 12, color: '#777', marginTop: 5 },
 });
-// Uso de estilos mas sencillo
