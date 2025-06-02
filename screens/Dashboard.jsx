@@ -13,6 +13,6 @@ export default function Dashboard() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000', // fondo negro para mantener consistencia
+    backgroundColor: '#000',
   },
 });
