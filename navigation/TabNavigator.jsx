@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreens';
 import ProfileScreen from '../screens/Profile.Screen';
 import Wonder from '../screens/JojolionSelectorScreen';
 import InteractiveGif from '../screens/InteractiveGif';
+import TaskStackNavigator from './TaskStackNavigator.jsx';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,8 +31,6 @@ export default function TabNavigator() {
         tabBarInactiveTintColor: '#fff',
         tabBarIcon: ({ color, size }) => {
           let iconName;
-
-          // Acá pongo unos íconos que se me ocurrieron medio de último
           switch (route.name) {
             case 'Inicio':
               iconName = 'home';
@@ -45,10 +44,12 @@ export default function TabNavigator() {
             case 'JolyneGif':
               iconName = 'speedometer';
               break;
+            case 'Tareas':
+              iconName = 'list';
+              break;
             default:
               iconName = 'ellipse';
           }
-
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}
@@ -57,6 +58,7 @@ export default function TabNavigator() {
       <Tab.Screen name="Perfil" component={ProfileScreen} />
       <Tab.Screen name="SoftAndWet" component={Wonder} />
       <Tab.Screen name="JolyneGif" component={InteractiveGif} />
+      <Tab.Screen name="Tareas" component={TaskStackNavigator} />
     </Tab.Navigator>
   );
 }

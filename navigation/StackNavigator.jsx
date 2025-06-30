@@ -1,15 +1,17 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/LoginScreen';
-import Dashboard from '../screens/Dashboard';
+import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
-export default function StackNavigator() {
+const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerShown: false }} />
+      <Stack.Screen name="Dashboard" component={TabNavigator} />
     </Stack.Navigator>
   );
-}
+};
+
+export default StackNavigator;
