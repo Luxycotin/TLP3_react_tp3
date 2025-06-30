@@ -1,18 +1,21 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
 const SubtaskListScreen = ({ route, navigation }) => {
   const { tarea } = route.params;
 
   return (
-    <View>
-      <Text style={{ fontSize: 20, fontWeight: 'bold', margin: 10 }}>{tarea.titulo}</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>{tarea.titulo}</Text>
       <FlatList
         data={tarea.subtareas}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate('DetalleSubtarea', { subtarea: item })}>
-            <Text style={{ fontSize: 16, margin: 10 }}>{item.titulo}</Text>
+          <TouchableOpacity
+            style={styles.itemContainer}
+            onPress={() => navigation.navigate('DetalleSubtarea', { subtarea: item })}
+          >
+            <Text style={styles.itemText}>{item.titulo}</Text>
           </TouchableOpacity>
         )}
       />
@@ -20,6 +23,28 @@ const SubtaskListScreen = ({ route, navigation }) => {
   );
 };
 
-//Me hubuiera gustando agregarle estilos pero tuve un inconveniente personal, y en resumen llegué a mi casa a las 11:50 y me dijeron que tenía hasta las 13 para corregir TPS... disculpe, igual veo si le agrego estilos, pero primero le paso el TP corregido, y si me deja le agrego estilos después. :)
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#e60000',
+    margin: 10,
+    textAlign: 'center',
+  },
+  itemContainer: {
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#222',
+  },
+  itemText: {
+    fontSize: 16,
+    color: '#fff',
+  },
+});
 
 export default SubtaskListScreen;
+

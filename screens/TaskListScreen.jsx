@@ -1,16 +1,19 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { tareas } from '../constants/tareas';
 
 const TaskListScreen = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={tareas}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate('Subtasks', { tarea: item })}>
-            <Text style={{ fontSize: 18, margin: 10 }}>{item.titulo}</Text>
+          <TouchableOpacity
+            style={styles.itemContainer}
+            onPress={() => navigation.navigate('Subtasks', { tarea: item })}
+          >
+            <Text style={styles.itemText}>{item.titulo}</Text>
           </TouchableOpacity>
         )}
       />
@@ -18,7 +21,20 @@ const TaskListScreen = ({ navigation }) => {
   );
 };
 
-
-//Me hubuiera gustando agregarle estilos pero tuve un inconveniente personal, y en resumen llegué a mi casa a las 11:50 y me dijeron que tenía hasta las 13 para corregir TPS... disculpe, igual veo si le agrego estilos, pero primero le paso el TP corregido, y si me deja le agrego estilos después. :)
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+  },
+  itemContainer: {
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#222',
+  },
+  itemText: {
+    color: '#fff',
+    fontSize: 18,
+  },
+});
 
 export default TaskListScreen;

@@ -1,18 +1,40 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const SubtaskDetailScreen = ({ route }) => {
   const { subtarea } = route.params;
 
   return (
-    <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{subtarea.titulo}</Text>
-      <Text style={{ marginTop: 10 }}>Descripción: {subtarea.descripcion}</Text>
-      <Text>Estado: {subtarea.estado}</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>{subtarea.titulo}</Text>
+      <Text style={styles.description}>Descripción: {subtarea.descripcion}</Text>
+      <Text style={styles.status}>Estado: {subtarea.estado}</Text>
     </View>
   );
 };
 
-//Me hubuiera gustando agregarle estilos pero tuve un inconveniente personal, y en resumen llegué a mi casa a las 11:50 y me dijeron que tenía hasta las 13 para corregir TPS... disculpe, igual veo si le agrego estilos, pero primero le paso el TP corregido, y si me deja le agrego estilos después. :)
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+    padding: 20,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#e60000',
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  description: {
+    fontSize: 16,
+    color: '#fff',
+    marginBottom: 10,
+  },
+  status: {
+    fontSize: 16,
+    color: '#fff',
+  },
+});
 
 export default SubtaskDetailScreen;
